@@ -1,4 +1,5 @@
 require_relative "../config/environment.rb"
+require 'pry'
 
 class Student
   attr_accessor :name, :grade
@@ -57,6 +58,7 @@ class Student
   end
 
   def self.new_from_db(row)
+    binding.pry
     new_student = self.new
     new_student.id = row[0]
     new_student.name = row[1]
@@ -68,7 +70,7 @@ class Student
     sql = <<-SQL
     SELECT *
     FROM students
-    WHERe name = ?
+    WHERE name = ?
     LIMIT 1
     SQL
     DB[:conn].execute(sql, name).map do |row|
