@@ -47,6 +47,15 @@ class Student
     student
   end
 
+  def update
+    sql = <<-SQL
+    UPDATE students
+    SET name = ?, grade = ?
+    WHERE id = ?
+    SQL
+    DB[:conn].eseculte(sql, self.name, self.grade, self.id)
+  end
+
 
   # Remember, you can access your database connection anywhere in this class
   #  with DB[:conn]
