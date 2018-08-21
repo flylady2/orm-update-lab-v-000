@@ -59,10 +59,11 @@ class Student
 
   def self.new_from_db(row)
     #binding.pry
-    new_student = self.new(new_student.id = nil, new_student.name, new_student.grade)
+
     new_student.id = row[0]
     new_student.name = row[1]
     new_student.grade = row[2]
+    new_student = self.new(name, grade, id)
     new_student
   end
 
